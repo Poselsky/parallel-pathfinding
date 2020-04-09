@@ -7,7 +7,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
     abstract class NodeMap
     {
         private Func<Node, Node, Node[]> PathFind;
-        public Node[,] MatrixMapRepresentation { get; }
+        public Node[,] MatrixMapRepresentation { get; protected set; }
         public NodeMap (IPathFindingAlgorithm Algorithm)
         {
             this.PathFind = new Func<Node, Node, Node[]>(Algorithm.CalculateShortestPath);

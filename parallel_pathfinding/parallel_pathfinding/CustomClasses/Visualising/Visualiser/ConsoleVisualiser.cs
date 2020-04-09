@@ -16,7 +16,7 @@ namespace parallel_pathfinding.CustomClasses.Visualising
                 for (int j = 0; j < Map.MatrixMapRepresentation.GetLength(1); j++)
                 {
                     bool areSame = Map[i, j] == Path[pathIndex];
-                    if (areSame && Path.Length - pathIndex > 0)
+                    if (areSame && Path.Length - pathIndex > 1)
                     {
                         pathIndex++;
                     }
