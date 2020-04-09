@@ -15,5 +15,10 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         abstract public void GenerateMap(int Width, int Height);
         abstract public double GetShortestPath(Node A, Node B);
+
+        public Node this[int i, int j]
+        {
+            get => MatrixMapRepresentation[i, j];
+        } 
     }
 }
