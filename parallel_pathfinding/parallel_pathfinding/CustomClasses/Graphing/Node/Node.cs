@@ -4,7 +4,7 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    class Node
+    public class Node
     {
         public List<Tuple<Node, double>> Neighbours { get; }
 
