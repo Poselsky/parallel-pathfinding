@@ -6,16 +6,16 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     class Node
     {
-        public List<Node> Neighbours { get; }
+        public List<Tuple<Node, double>> Neighbours { get; }
 
         public Node()
         {
-            this.Neighbours = new List<Node>();
+            this.Neighbours = new List<Tuple<Node, double>>();
         }
 
-        public void AddNeighbour(Node Neighbour)
+        public void AddNeighbour(Node Neighbour, double Distance)
         {
-            Neighbours.Add(Neighbour);
+            Neighbours.Add(new Tuple<Node, double>(Neighbour, Distance));
         }
     }
 }
