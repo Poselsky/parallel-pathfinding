@@ -4,9 +4,9 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    class AStarGridAlgorithm : IPathFindingAlgorithm
+    static class AStarGridAlgorithm
     {
-        public Node[] CalculateShortestPath(Node From, Node To)
+        static public Node[] CalculateShortestPath(GridNode From, GridNode To, NodeMap Map)
         {
             throw new NotImplementedException();
         }
