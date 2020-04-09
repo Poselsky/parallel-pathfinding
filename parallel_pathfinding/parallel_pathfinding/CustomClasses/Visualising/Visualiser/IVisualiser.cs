@@ -7,6 +7,6 @@ namespace parallel_pathfinding.CustomClasses.Visualising
 {
     interface IVisualiser
     {
-        public void Visualise(NodeMap Map);
+        public void Visualise(NodeMap Map, Node[] Path);
     }
 }
