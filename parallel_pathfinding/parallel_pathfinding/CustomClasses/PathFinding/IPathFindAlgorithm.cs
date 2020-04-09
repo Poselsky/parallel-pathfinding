@@ -6,6 +6,6 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     interface IPathFindingAlgorithm
     {
-        public double CalculateShortestPath(Node From, Node To);
+        public Node[] CalculateShortestPath(Node From, Node To);
     }
 }
