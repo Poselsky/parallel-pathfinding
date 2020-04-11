@@ -16,7 +16,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
             {
                 for (int j = 0; j < Height; j++)
                 {
-                    MatrixMapRepresentation[i, j] = new Node();
+                    MatrixMapRepresentation[i, j] = new GridNode(i,j);
                 }
             }
 
@@ -30,11 +30,9 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // O O O O O
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j + 1], 1);
-                        // Bottom Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j + 1], 1);
-                        // Bottom
+                        SetRight(i,j);
+                        SetBottomRight(i,j);
+                        SetBottom(i, j);
                     }
                     else if (i == Width - 1 && j == 0)
                     {
@@ -42,12 +40,9 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // X O O O O
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Top Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j + 1], 1);
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j + 1], 1);
+                        SetTop(i, j);
+                        SetTopRight(i, j);
+                        SetRight(i, j);
                     }
                     else if (i == Width - 1 && j == Height - 1)
                     {
@@ -55,12 +50,9 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // O O O O X
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
-                        // Top Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j - 1], 1);
+                        SetTop(i, j);
+                        SetLeft(i, j);
+                        SetTopLeft(i, j);
                     }
                     else if (i == 0 && j == Height - 1)
                     {
@@ -68,12 +60,9 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // O O O O O
-                        // Bottom
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j], 1);
-                        // Bottom Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j - 1], 1);
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
+                        SetBottom(i, j);
+                        SetBottomLeft(i, j);
+                        SetLeft(i, j);
                     }
                     else if (j == 0)
                     {
@@ -81,16 +70,11 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // X O O O O
                         // X O O O O
                         // O O O O O
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Top Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j + 1], 1);
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, 1], 1);
-                        // Bottom Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, 1], 1);
-                        // Bottom
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j + 1], 1);
+                        SetTop(i, j);
+                        SetTopRight(i, j);
+                        SetRight(i, j);
+                        SetBottomRight(i, j);
+                        SetBottom(i, j);
                     }
                     else if (j == Height - 1)
                     {
@@ -98,16 +82,11 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O X
                         // O O O O X
                         // O O O O O
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Top Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j - 1], 1);
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
-                        // Bottom Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j - 1], 1);
-                        // Bottom
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j], 1);
+                        SetTop(i, j);
+                        SetTopLeft(i, j);
+                        SetLeft(i, j);
+                        SetBottomLeft(i, j);
+                        SetBottom(i, j);
                     }
                     else if (i == Width - 1)
                     {
@@ -115,16 +94,11 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // O X X X O
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
-                        // Top Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j - 1], 1);
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Top Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j + 1], 1);
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j + 1], 1);
+                        SetLeft(i, j);
+                        SetTopLeft(i, j);
+                        SetTop(i, j);
+                        SetTopRight(i, j);
+                        SetRight(i, j);
                     }
                     else if (i == 0)
                     {
@@ -132,17 +106,11 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O 0
                         // O O O O 0
                         // O O O O O
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
-                        // Bottom Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j - 1], 1);
-                        // Bottom
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j], 1);
-                        // Bottom Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j + 1], 1);
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j + 1], 1);
-
+                        SetLeft(i, j);
+                        SetBottomLeft(i, j);
+                        SetBottom(i, j);
+                        SetBottomRight(i, j);
+                        SetRight(i, j);
                     }
                     else
                     {
@@ -150,25 +118,55 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O X X X O
                         // O X X X O
                         // O O O O O
-                        // Top
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j], 1);
-                        // Top Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j + 1], 1);
-                        // Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j + 1], 1);
-                        // Bottom Right
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j + 1], 1);
-                        // Bottom
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j], 1);
-                        // Bottom Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i + 1, j - 1], 1);
-                        // Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i, j - 1], 1);
-                        // Top Left
-                        MatrixMapRepresentation[i, j].AddNeighbour(MatrixMapRepresentation[i - 1, j - 1], 1);
+                        SetTop(i, j);
+                        SetTopRight(i, j);
+                        SetRight(i, j);
+                        SetBottomRight(i, j);
+                        SetBottom(i, j);
+                        SetBottomLeft(i, j);
+                        SetLeft(i, j);
+                        SetTopLeft(i, j);
                     }
                 }
             }
+        }
+
+        private void SetTop(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y], 1);
+        }
+
+        private void SetTopRight(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y + 1], 1);
+        }
+
+        private void SetRight(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x, y + 1], 1);
+        }
+
+        private void SetBottomRight(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y + 1], 1);
+        }
+        private void SetBottom(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y], 1);
+        }
+
+        private void SetBottomLeft(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y - 1], 1);
+        }
+
+        private void SetLeft(int x, int y)
+        {
+            MatrixMapRepresentation[x, j].AddNeighbour(MatrixMapRepresentation[x, y - 1], 1);
+        }
+        private void SetTopLeft(int x, int y)
+        {
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y - 1], 1);
         }
 
         public override Node[] GetShortestPath(Node A, Node B)
