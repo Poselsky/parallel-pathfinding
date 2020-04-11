@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "parallel_pathfinding", "parallel_pathfinding\parallel_pathfinding.csproj", "{1764572E-D904-4B72-8107-A643C5C6B545}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parallel_pathfinding_test", "parallel_pathfinding_test\parallel_pathfinding_test.csproj", "{B891AE60-C655-4DB7-AAEC-080FBC5AACF7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1764572E-D904-4B72-8107-A643C5C6B545} = {1764572E-D904-4B72-8107-A643C5C6B545}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
