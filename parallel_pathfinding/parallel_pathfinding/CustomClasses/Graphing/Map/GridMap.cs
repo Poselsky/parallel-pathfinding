@@ -4,7 +4,7 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    class GridMap : NodeMap
+    public class GridMap : NodeMap
     {
         public GridMap(Func<Node, Node, NodeMap, Node[]> PathfindingAlgorithm) : base(PathfindingAlgorithm) { }
 
@@ -171,7 +171,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         public override Node[] GetShortestPath(Node A, Node B)
         {
-            throw new NotImplementedException();
+            return this.PathFindWithMap(A, B, this);
         }
     }
 }
