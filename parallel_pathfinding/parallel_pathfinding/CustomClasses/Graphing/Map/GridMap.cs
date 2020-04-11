@@ -6,7 +6,8 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     public class GridMap : NodeMap
     {
-        public GridMap(Func<Node, Node, NodeMap, Node[]> PathfindingAlgorithm) : base(PathfindingAlgorithm) { }
+        public GridMap(Func<GridNode, GridNode, NodeMap, Node[]> PathfindingAlgorithm) 
+            : base(new Func<Node, Node, NodeMap, Node[]>((From, To, Map) => PathfindingAlgorithm((GridNode)From, (GridNode)To, Map))) { }
 
         public override void GenerateMap(int Width, int Height)
         {
@@ -173,5 +174,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
         {
             return this.PathFindWithMap(A, B, this);
         }
+
+        public new GridNode this[int x, int y] => (GridNode)MatrixMapRepresentation[x, y];
     }
 }
