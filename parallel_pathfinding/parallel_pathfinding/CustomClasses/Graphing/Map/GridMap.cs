@@ -162,7 +162,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         private void SetLeft(int x, int y)
         {
-            MatrixMapRepresentation[x, j].AddNeighbour(MatrixMapRepresentation[x, y - 1], 1);
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x, y - 1], 1);
         }
         private void SetTopLeft(int x, int y)
         {
