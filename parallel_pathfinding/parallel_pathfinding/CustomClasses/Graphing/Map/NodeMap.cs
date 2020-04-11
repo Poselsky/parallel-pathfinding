@@ -4,7 +4,7 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    abstract class NodeMap
+    public abstract class NodeMap
     {
         protected Func<Node, Node, Node[]> PathFindMapless;
         protected Func<Node, Node, NodeMap, Node[]> PathFindWithMap;
