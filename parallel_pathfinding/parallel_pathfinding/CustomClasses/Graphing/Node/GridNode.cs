@@ -6,6 +6,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     class GridNode : Node
     {
+        private bool _isWall = false;
         public List<Tuple<GridNode, double>> Neighbours { get; }
         private GridNode _parent;
         private Tuple<int, int> Position;
@@ -34,6 +35,21 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         public void SetParent(GridNode parent)
         { _parent = parent; }
+
+        public void MakeWall()
+        {
+            _isWall = true;
+        }
+
+        public void UnmakeWall()
+        {
+            _isWall = false;
+        }
+
+        public bool IsWall()
+        {
+            return _isWall;
+        }
 
 
     }
