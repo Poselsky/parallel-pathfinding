@@ -7,6 +7,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
     class GridNode : Node
     {
         private Tuple<int, int> Position;
+        public GridNode parent{get; set;}
         public GridNode(int PositionX, int PositionY) : base()
         {
             this.Position = new Tuple<int, int>(PositionX, PositionY);
@@ -14,7 +15,9 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         public int[] GetXY()
         {
-            int[] coordinates = [Position.Item1, Position.Item2];
+            int[] coordinates = new int[2];
+            coordinates[0] = Position.Item1;
+            coordinates[1] = Position.Item2;
             return coordinates;
         }
 
