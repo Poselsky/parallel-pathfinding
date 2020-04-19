@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CustomClasses\Graphing\PathFinding\**" />
-    <EmbeddedResource Remove="CustomClasses\Graphing\PathFinding\**" />
-    <None Remove="CustomClasses\Graphing\PathFinding\**" />
+    <Folder Include="CustomClasses\Graphing\PathFinding\" />
   </ItemGroup>
 
 </Project>
