@@ -6,8 +6,8 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     class GridNode : Node
     {
+        private GridNode _parent;
         private Tuple<int, int> Position;
-        public GridNode parent{get; set;}
         public GridNode(int PositionX, int PositionY) : base()
         {
             this.Position = new Tuple<int, int>(PositionX, PositionY);
@@ -20,6 +20,13 @@ namespace parallel_pathfinding.CustomClasses.Graphing
             coordinates[1] = Position.Item2;
             return coordinates;
         }
+
+        public GridNode GetParent()
+        { return _parent; }
+
+        public void SetParent(GridNode parent)
+        { _parent = parent; }
+
 
     }
 }
