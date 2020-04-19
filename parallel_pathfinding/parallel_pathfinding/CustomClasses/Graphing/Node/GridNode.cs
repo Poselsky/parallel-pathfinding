@@ -9,6 +9,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
         public List<Tuple<GridNode, double>> Neighbours { get; }
         private GridNode _parent;
         private Tuple<int, int> Position;
+
         public GridNode(int PositionX, int PositionY) : base()
         {
             this.Neighbours = new List<Tuple<GridNode, double>>();
