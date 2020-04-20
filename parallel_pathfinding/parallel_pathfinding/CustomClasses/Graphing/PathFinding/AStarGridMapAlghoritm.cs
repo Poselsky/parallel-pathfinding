@@ -52,18 +52,18 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                     else
                         open.Add(typeCastedNeighbour);
 
-                    typeCastedNeighbour.HCost = CalculateH(current, To);
+                    typeCastedNeighbour.HCost = CalculateH(typeCastedNeighbour, To);
                     typeCastedNeighbour.GCost = current.GCost + neighbour.Item2;
                     typeCastedNeighbour.Parent = current;
                 }
             }
 
-            finalList.Add(From);
             while (current != From)
             {
                 finalList.Add(current);
                 current = current.Parent;
             }
+            finalList.Add(current);
 
             return finalList.ToArray();
         }
