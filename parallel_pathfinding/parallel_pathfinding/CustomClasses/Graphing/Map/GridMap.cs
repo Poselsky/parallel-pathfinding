@@ -21,6 +21,23 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                 }
             }
 
+            if (Width == 1 && Height == 1)
+            {
+                return;
+            } else if (Width == 1)
+            {
+                GenerateMapHorizontally(Height);
+            } else if (Height == 1)
+            {
+                GenerateMapVertically(Width);
+            } else
+            {
+                GenerateFullMap(Width, Height);
+            }
+        }
+
+        private void GenerateFullMap(int Width, int Height)
+        {
             for (int i = 0; i < Width; i++)
             {
                 for (int j = 0; j < Height; j++)
@@ -31,8 +48,8 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                         // O O O O O
                         // O O O O O
                         // O O O O O
-                        SetRight(i,j);
-                        SetBottomRight(i,j);
+                        SetRight(i, j);
+                        SetBottomRight(i, j);
                         SetBottom(i, j);
                     }
                     else if (i == Width - 1 && j == 0)
@@ -130,6 +147,28 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                     }
                 }
             }
+        }
+
+        private void GenerateMapVertically(int Height)
+        {
+            SetBottom(0, 0);
+            for (int i = 1; i< Height-1; i++)
+            {
+                SetTop(i, 0);
+                SetBottom(i, 0);
+            }
+            SetTop(Height - 1, 0);
+        }
+
+        private void GenerateMapHorizontally(int Width)
+        {
+            SetRight(0, 0);
+            for (int i = 1; i < Width - 1; i++)
+            {
+                SetRight(0, i);
+                SetLeft(0, i);
+            }
+            SetLeft(0, Width - 1);
         }
 
         private void SetTop(int x, int y)
