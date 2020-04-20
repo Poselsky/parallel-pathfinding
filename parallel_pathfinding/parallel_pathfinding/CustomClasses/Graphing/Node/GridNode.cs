@@ -6,10 +6,19 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     public class GridNode : Node
     {
-        public Tuple<int, int> Coordinates { get; private set; }
-        public GridNode(int CoordinateX, int CoordinateY)
+        public GridNode Parent { get; set; }
+        public int PositionX { get; }
+        public int PositionY { get; }
+
+        public double GCost { get; set; } = 0; //current lenght from starting Node, starting Node has g = 0
+        public double HCost { get; set; } = 0;
+
+        public GridNode(int PositionX, int PositionY) : base()
         {
-            Coordinates = new Tuple<int, int>(CoordinateX, CoordinateY);
+            this.PositionX = PositionX;
+            this.PositionY = PositionY;
         }
+
+        public double FCost() => GCost + HCost; 
     }
 }

@@ -39,6 +39,81 @@ namespace parallel_pathfinding_test.UnitTests.PathFinding
 
             Assert.IsTrue(GeneratedPath.Length == 10);
         }
+
+        [Test]
+        public void GetShortestPath_3By3Grid_SuccesIfIsPathFromBottomLeftAndTopRightCorner()
+        {
+            var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
+
+            s.GenerateMap(3, 3);
+            var GeneratedShortestPath = s.GetShortestPath(s[2, 0], s[0, 2]);
+            var TrueShortestPath = new Node[] { s[2, 0], s[1,1], s[0, 2] };
+            for (int i = 0; i < TrueShortestPath.Length; i++)
+            {
+                if (TrueShortestPath[i] != GeneratedShortestPath[i])
+                {
+                    Assert.Fail("Shortest paths are not same. Check if order of nodes in path is correct.");
+                }
+            }
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void GetShortestPath_3By3Grid_SuccesIfIsPathFromTopLeftAndBottomRightCorner()
+        {
+            var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
+
+            s.GenerateMap(3, 3);
+            var GeneratedShortestPath = s.GetShortestPath(s[0, 0], s[2, 2]);
+            var TrueShortestPath = new Node[] { s[0, 0], s[1, 1], s[2, 2] };
+            for (int i = 0; i < TrueShortestPath.Length; i++)
+            {
+                if (TrueShortestPath[i] != GeneratedShortestPath[i])
+                {
+                    Assert.Fail("Shortest paths are not same. Check if order of nodes in path is correct.");
+                }
+            }
+
+            Assert.Pass();
+        }
+
+        [Test]
+        public void GetShortestPath_1Point_FailsIfIsNotTheSamePoint()
+        {
+            var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
+
+            s.GenerateMap(1, 1);
+            var GeneratedShortestPath = s.GetShortestPath(s[0, 0], s[0, 0]);
+            var TrueShortestPath = new Node[] { s[0, 0] };
+
+            Assert.That(GeneratedShortestPath[0] == TrueShortestPath[0], "Method doesn't return the same point");
+        }
+
+        [Test]
+        public void GetShortestPath_200By200Grid_SuccesIfIsPathFromTopLeftAndBottomRightCorner()
+        {
+            var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
+
+            s.GenerateMap(200, 200);
+            var GeneratedShortestPath = s.GetShortestPath(s[0, 0], s[199, 199]);
+            var TrueShortestPath = new Node[200] ;
+
+            for(int i = 0; i < 200; i++)
+            {
+                TrueShortestPath[i] = s[i, i];
+            }
+
+            for (int i = 0; i < TrueShortestPath.Length; i++)
+            {
+                if (TrueShortestPath[i] != GeneratedShortestPath[i])
+                {
+                    Assert.Fail("Shortest paths are not same. Check if order of nodes in path is correct.");
+                }
+            }
+
+            Assert.Pass();
+        }
     }
 
 }
