@@ -139,7 +139,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         private void SetTopRight(int x, int y)
         {
-            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y + 1], 1);
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y + 1], 1.4);
         }
 
         private void SetRight(int x, int y)
@@ -149,7 +149,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         private void SetBottomRight(int x, int y)
         {
-            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y + 1], 1);
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y + 1], 1.4);
         }
         private void SetBottom(int x, int y)
         {
@@ -158,7 +158,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
         private void SetBottomLeft(int x, int y)
         {
-            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y - 1], 1);
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x + 1, y - 1], 1.4);
         }
 
         private void SetLeft(int x, int y)
@@ -167,7 +167,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
         }
         private void SetTopLeft(int x, int y)
         {
-            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y - 1], 1);
+            MatrixMapRepresentation[x, y].AddNeighbour(MatrixMapRepresentation[x - 1, y - 1], 1.4);
         }
 
         public override Node[] GetShortestPath(Node A, Node B)
