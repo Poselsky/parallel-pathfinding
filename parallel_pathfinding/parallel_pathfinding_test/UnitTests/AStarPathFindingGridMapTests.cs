@@ -97,7 +97,7 @@ namespace parallel_pathfinding_test.UnitTests.PathFinding
 
             s.GenerateMap(200, 200);
             var GeneratedShortestPath = s.GetShortestPath(s[0, 0], s[199, 199]);
-            var TrueShortestPath = new Node[1000] ;
+            var TrueShortestPath = new Node[200] ;
 
             for(int i = 0; i < 200; i++)
             {

@@ -65,6 +65,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
             }
             finalList.Add(current);
 
+            finalList.Reverse();
             return finalList.ToArray();
         }
 
