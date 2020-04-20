@@ -33,7 +33,7 @@ namespace parallel_pathfinding_test.UnitTests.PathFinding
         {
             var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
 
-            s.GenerateMap(1, 10);
+            s.GenerateMap(2, 10);
 
             var GeneratedPath = s.GetShortestPath(s[0, 0], s[0, 9]);
 
