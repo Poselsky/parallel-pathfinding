@@ -89,6 +89,31 @@ namespace parallel_pathfinding_test.UnitTests.PathFinding
 
             Assert.That(GeneratedShortestPath[0] == TrueShortestPath[0], "Method doesn't return the same point");
         }
+
+        [Test]
+        public void GetShortestPath_200By200Grid_SuccesIfIsPathFromTopLeftAndBottomRightCorner()
+        {
+            var s = new GridMap(new Func<GridNode, GridNode, NodeMap, Node[]>(AStarGridMapAlghoritm.FindShortestPathSingleThread));
+
+            s.GenerateMap(200, 200);
+            var GeneratedShortestPath = s.GetShortestPath(s[0, 0], s[199, 199]);
+            var TrueShortestPath = new Node[1000] ;
+
+            for(int i = 0; i < 200; i++)
+            {
+                TrueShortestPath[i] = s[i, i];
+            }
+
+            for (int i = 0; i < TrueShortestPath.Length; i++)
+            {
+                if (TrueShortestPath[i] != GeneratedShortestPath[i])
+                {
+                    Assert.Fail("Shortest paths are not same. Check if order of nodes in path is correct.");
+                }
+            }
+
+            Assert.Pass();
+        }
     }
 
 }
