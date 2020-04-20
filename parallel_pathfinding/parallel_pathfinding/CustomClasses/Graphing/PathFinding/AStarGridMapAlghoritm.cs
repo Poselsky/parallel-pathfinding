@@ -80,6 +80,6 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 
 
         //sqrt(a^2 + b^2) --> length of a line between two points
-        static private double CalculateH(GridNode From, GridNode To) => Math.Sqrt(Math.Pow(From.PositionX - To.PositionX, 2) + Math.Pow(From.PositionY - From.PositionY, 2));
+        static private double CalculateH(GridNode From, GridNode To) => Math.Sqrt(Math.Pow((double)From.PositionX - (double)To.PositionX, 2) + Math.Pow((double)From.PositionY - (double)To.PositionY, 2));
     }
 }
