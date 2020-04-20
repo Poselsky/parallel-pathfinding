@@ -6,28 +6,16 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     public class Node
     {
-        private double _gCost = 0; //current lenght from starting Node, starting Node has g = 0
-        private double _hCost = 0;
+        public List<Tuple<Node, double>> Neighbours { get; }
 
         public Node()
-        { }
-
-        public void SetGCost(double gCost)
         {
-            _gCost = gCost;
+            this.Neighbours = new List<Tuple<Node, double>>();
         }
 
-        public void SetHCost(double hCost)
-        { _hCost = hCost; }
-
-        public double GetGCost()
+        public void AddNeighbour(Node Neighbour, double Distance)
         {
-            return _gCost;
+            Neighbours.Add(new Tuple<Node, double>(Neighbour, Distance));
         }
-
-        public double GetHCost()
-        { return _hCost; }
-        public double GetFCost()
-        { return _hCost + _gCost; }
     }
 }
