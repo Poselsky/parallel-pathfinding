@@ -4,10 +4,10 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    abstract class NodeMap
+    public abstract class NodeMap
     {
-        private Func<Node, Node, Node[]> PathFindMapless;
-        private Func<Node, Node, NodeMap, Node[]> PathFindWithMap;
+        protected Func<Node, Node, Node[]> PathFindMapless;
+        protected Func<Node, Node, NodeMap, Node[]> PathFindWithMap;
         public Node[,] MatrixMapRepresentation { get; protected set; }
         public NodeMap (Func<Node, Node, Node[]> PathfindingAlgorithm)
         {
