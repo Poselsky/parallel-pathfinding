@@ -4,7 +4,7 @@ using System.Text;
 
 namespace parallel_pathfinding.CustomClasses.Graphing
 {
-    class GridNode : Node
+    public class GridNode : Node
     {
         private bool _isWall = false;
         public List<Tuple<GridNode, double>> Neighbours { get; }
