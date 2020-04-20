@@ -6,7 +6,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
 {
     static class AStarGridAlgorithm
     {
-        static public List<Node> CalculateShortestPath(GridNode From, GridNode To, NodeMap Map)
+        static public Node[] CalculateShortestPath(GridNode From, GridNode To, NodeMap Map)
         {
             List<GridNode> open = new List<GridNode>(); // Nodes yet to be evaluated, at first only start node will be here
             List<GridNode> closed = new List<GridNode>(); // Nodes already evaluated
@@ -60,7 +60,7 @@ namespace parallel_pathfinding.CustomClasses.Graphing
                 current = current.GetParent();
             }
 
-            return finalList;
+            return finalList.ToArray();
         }
 
         static private double CalculateH(GridNode From, GridNode To)
